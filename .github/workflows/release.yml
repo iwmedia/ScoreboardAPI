@@ -56,14 +56,3 @@ jobs:
           PACKAGES_PASSWORD: ${{ github.token }}
           REPOSITORY_OWNER: ${{ github.repository_owner }}
           REPOSITORY_NAME: ${{ github.event.repository.name }}
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v0.1.7
-        id: create_release
-        with:
-          tag_name: ${{ steps.current_tag.outputs.tag }}
-          name: Release ${{ steps.current_tag.outputs.tag }}
-          body: ${{ steps.get_changelog.outputs.log }}
-          files: ./artifacts/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
