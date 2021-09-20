@@ -32,16 +32,6 @@ jobs:
           key: ${{ runner.os }}-maven-release-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven-
 
-      - name: Get current tag
-        id: current_tag
-        run: echo ::set-output name=tag::$(git describe --abbrev=0 --tags)
-        if: steps.release.outcome == 'success' && steps.release.conclusion == 'success'
-
-      - name: Get Git Changelog
-        id: get_changelog
-        uses: thenilsdev/git-log-action@1.0.5
-        if: steps.release.outcome == 'success' && steps.release.conclusion == 'success'
-
       - name: Build with Maven
         run: mvn -B package
         env:
