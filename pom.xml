@@ -15,10 +15,24 @@
 
     <repositories>
         <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/iwmedia/*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>nukkit-repo</id>
             <url>https://repo.nukkitx.com/snapshot</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/${env.REPOSITORY_OWNER}/${env.REPOSITORY_NAME}</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -30,7 +44,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
+            <version>1.16.20</version>
         </dependency>
     </dependencies>
 
@@ -62,6 +76,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
